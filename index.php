@@ -1,0 +1,170 @@
+<?php
+# Initialize the session
+session_start();
+
+
+
+
+# If user is not logged in then redirect him to login page
+#if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
+#  echo "<script>" . "window.location.href='./login.php';" . "</script>";
+ # exit;
+#}
+
+function checkLogout(){
+  if (isset($_SESSION['user_id'])) {
+    return true;
+  }else {
+    return false;
+  }
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Platform</title>
+    <link rel="stylesheet" href="html.css">
+    <link rel="icon" href="icons/univ.png">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;300;400;500;600;700;800&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+<section class="home" id="home">
+    <nav>
+        <h2>Student<span>Platform</span></h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#home">Events</a></li>
+            <li><a href="#home">Services</a></li>
+            <li><a href="#home">informatics</a></li>
+            <li><a href="#home">Courses</a></li>
+            <li><a href="#home">Contact us</a></li>
+            <li><a href="#home">About Me</a></li>
+        </ul>
+        <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {?>
+            <div class="row justify-content-center">
+            <div class="col-lg-5 text-center">
+              <img src="./img/blank-avatar.jpg" class="img-fluid rounded" alt="User avatar" width="180">
+              <h4 class="my-4">Hello, <?= htmlspecialchars($_SESSION["username"]); ?></h4>
+              <a href="./logout.php" class="btn btn-primary">Log Out</a>
+            </div>
+          </div>
+        <?php }else{?>
+                  
+        <a href="login.php"class="btn">Log in</a>
+        <a href="register.php"class="btn">Sign up</a>
+          <?php }?>
+    </nav>
+    <div class="content">
+        <div class="container-texts">
+            <h4>Welcome To</h4>
+            <h1>University Of <span>Batna</span></h1>
+            <h3>Students <span>Blogging Platform</span></h3>
+        </div>
+
+        <div class="container-images">
+           <img src="imgs/Thesis-pana.png" alt=""class="pic">
+        </div>
+    </div>
+</section>
+<section class="services">
+    <h1 class="text-center"><span>Our</span>Services</h1>
+    <div class="box">
+        <div class="card">
+            <i class="fa-solid fa-book"></i>
+           <h5>Courses</h5>
+           <div class="par">
+            <p>
+                يمكنك بسهولة تحميل الملفات التي تحتاجها بنقرة واحدة. سواء كنت بحاجة إلى مستندات جامعية أو دروس فاتتك وحتى دروس السنوات الماضية
+            </p>
+            </div>
+        </div> 
+        <div class="card">
+            <i class="fa-solid fa-book-open"></i>
+           <h5>TD</h5>
+           <div class="par">
+            <p>
+                إتطلع على تمارين وواجبات السنوات الماضية لجميع المواد
+            </p>
+            </div>
+        </div> 
+        <div class="card">
+            <i class="fa-solid fa-desktop"></i>
+           <h5>TP</h5>
+           <div class="par">
+            <p>
+                حمل مشاريع السنوات الماضية جاهزة وقابلة للتعديل وإتطلع على التمارين التطبيقية
+            </p>
+            </div>
+        </div> 
+        <div class="card">
+            <i class="fa-solid fa-pencil"></i>
+           <h5>Exams</h5>
+           <div class="par">
+            <p>
+            إتطلع على كل الإمتحانات الخاصة بجميع مواد الإعلام الآلي لسنة 2021/2020 والمزيد...
+            </p>
+            </div>
+        </div> 
+
+    </div>
+</section>
+<section class="fac">
+    <div class="container-fac">
+        <h1>Get <span>Better</span></h1></div>
+       <div class="content-fac">
+        
+        <div class="picture"><img src="icons/book1.png" alt=""></div>
+        <div class="picture"><img src="icons/book2.png" alt=""></div>
+        <div class="picture"><img src="icons/book3.png" alt=""></div>
+        <div class="picture"><img src="icons/book4.png" alt=""></div>
+        <div class="picture"><img src="icons/book5.png" alt=""></div>
+        <div class="picture"><img src="icons/book6.png" alt=""></div>
+        <div class="picture"><img src="icons/book7.png" alt=""></div>
+        <div class="picture"><img src="icons/book8.png" alt=""></div>
+        
+       </div>
+        <div class="container-images">
+         <img src="imgs/skills.png" alt=""class="mypic">
+        </div>
+    </div>   
+        
+
+
+</section> 
+        
+
+<section class="about">
+    <div class="container-images">
+        <img src="imgs/abtus.png" alt=""class="mypic">
+        </div>
+        <div class="container-texts">
+            <h1>About<span>Me</span></h1>
+            <h5>Students<SPAN>Blogging Platform</SPAN></h5>
+            <p>
+                Welcome to our Students Blogging platform, a dynamic community where students share their stories, passions, and experiences.
+                 Join us to connect, inspire, and grow together on this exciting journey of self-expression and personal development.
+                  Your voice matters, so let's start writing and make an impact today! 
+            </p>
+        </div>
+        
+
+
+</section> 
+<footer>
+    <div class="content-footer">
+        <h2>Contact <span>Us</span></h2>
+        <p>
+            للمزيد من الدروس، التمارين، الامتحانات والمعلومات الجامعية يرجى التواصل معنا وشكرا
+        </p>
+        <p class="end">CopyRight By Mohamed Boudiaf</p>
+    </div>
+</footer>
+</body>
+</html>
